@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ResearchNote",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n\nCode\n1 + 1\n\n\n[1] 2"
+  },
+  {
+    "objectID": "intro.html#plot-of-uniaxial-bearing-capacities",
+    "href": "intro.html#plot-of-uniaxial-bearing-capacities",
+    "title": "1  Code Blocks",
+    "section": "1.1 Plot of Uniaxial Bearing Capacities",
+    "text": "1.1 Plot of Uniaxial Bearing Capacities\n#| standalone: true\n#| components: [editor, viewer]\n#| layout: vertical\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom shiny import App, render, ui\n\napp_ui = ui.page_fluid(\n    ui.input_slider(\"n\", \"Diameter of Foundation\", 0, 10, 8),\n    ui.output_plot(\"plot\"),\n)\n\n\ndef server(input, output, session):\n    @output\n    @render.plot(alt=\"A histogram\")\n    def plot():\n        np.random.seed(19680801)\n        x = 100 + 15 * np.random.randn(437)\n\n        fig, ax = plt.subplots()\n        ax.hist(x, input.n(), density=True)\n        return fig\n\n\napp = App(app_ui, server, debug=True)\n\nHello World!"
+  }
+]
