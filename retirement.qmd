@@ -1,0 +1,44 @@
+---
+title: "Calculator"
+format: dashboard
+server: shiny
+---
+
+```{python}
+#| context: setup
+import math
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+from shiny import App, reactive, render, ui
+```
+
+## Row {.flow}
+
+```{python}
+
+ui.h1("Title")
+
+@render.code
+def greeting():
+    return f"Hello, world!\nIt's currently {time()}."
+  
+@reactive.calc
+def time():
+    reactive.invalidate_later(1)
+    return datetime.now()
+
+ui.h1("Calculate")
+
+ui.input_slider("x", "Slider value", min=0, max=100, value=10)
+ui.input_action_button("compute", "Compute!")
+
+@reactive.calc
+async def result():
+    return f"Result: {input.x()}"
+
+```
+
+
