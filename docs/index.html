@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kyeongsunkim – quarto-input5b12df2a</title>
+<title>kyeongsunkim – quarto-input68b46507</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,30 +130,28 @@ ul.task-list li input[type="checkbox"] {
 <section id="input" class="level1">
 <h1>input</h1>
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
-from shiny import App, render, ui, input
-from numpy import random
 
-ui.column(
-    4,
-    "Foundation Dimensions",
-    ui.input_numeric("n1", label="n", value=1000, min=1),
-    ui.input_numeric("mean1", label="µ", value=0, step=0.1),
-    ui.input_numeric("sd1", label="σ", value=0.5, min=0.1, step=0.1),
-    ui.input_numeric("D", label="Diameter", value = 8, min = 0)
-),
-        
+from shiny import reactive
+from shiny.express import input, render, ui
 
-@render.text
-def txt1():
-    return f'Input is: "{D}"'
-
+ui.input_slider("x", "Choose a number", 1, 100, 50)
 
 
 @reactive.Calc
 def x_times_2():
     val = input.x() * 2
-    print(f"Running x_times_2(). Result is {D}.")
+    print(f"Running x_times_2(). Result is {val}.")
     return val
+
+
+@render.text
+def txt1():
+    return f'x times 2 is: "{x_times_2()}"'
+
+
+@render.text
+def txt2():
+    return f'x times 2 is: "{x_times_2()}"'
 </code></pre>
 
 
