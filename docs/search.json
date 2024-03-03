@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "input",
+    "title": "Input Parameters",
     "section": "",
-    "text": "input\n#| standalone: true\n\nfrom shiny import reactive\nfrom shiny.express import input, render, ui\n\nui.input_numeric(\"x\", \"Numeric input\", 1, min=1, max=10) \n\n\n@reactive.Calc\ndef x_times_2():\n    val = input.x() * 2\n    print(f\"Running x_times_2(). Result is {val}.\")\n    return val\n\n\n@render.text\ndef txt1():\n    return f'x times 2 is: \"{x_times_2()}\"'\n\n\n@render.text\ndef txt2():\n    return f'x times 2 is: \"{x_times_2()}\"'"
+    "text": "Input Parameters\n#| standalone: true\n\nfrom shiny import reactive\nfrom shiny.express import input, render, ui\n\n@render.text\ndef txt1():\n    return f'Foundation'\n\n\nui.input_numeric(\"D_f\", \"Diameter (m)\", 8) \nui.input_numeric(\"L_f\", \"Length (m)\", 9.3) \nui.input_numeric(\"t_f\", \"Thickness (mm)\", 20) \nui.input_numeric(\"E_f\", \"Young's modulus (GPa)\", 210) \nui.input_numeric(\"rho_f\", \"Density (kg/m3)\", 7850) \n\n\n@render.text\ndef txt1():\n    return f'Soil'\n\nui.input_numeric(\"rho_s\", \"Soil's Density (kg/m3)\", 2000) \nui.input_numeric(\"E_s\", \"Soil's Young's modulus at 1D depth (MPa)\", 130) \nui.input_numeric(\"v_s\", \"Soil's Poisson ratio\", 130) \n\n\n@reactive.Calc\ndef x_times_2():\n    val = input.D_f() * 2\n    print(f\"D_f times 2 =  {val}.\")\n    return val"
   },
   {
     "objectID": "about.html",

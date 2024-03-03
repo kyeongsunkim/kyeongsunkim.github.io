@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kyeongsunkim – quarto-inputd77533f2</title>
+<title>kyeongsunkim – quarto-inputb79db319</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#input" id="toc-input" class="nav-link active" data-scroll-target="#input">input</a></li>
+  <li><a href="#input-parameters" id="toc-input-parameters" class="nav-link active" data-scroll-target="#input-parameters">Input Parameters</a></li>
   </ul>
 </nav>
     </div>
@@ -127,31 +127,41 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="input" class="level1">
-<h1>input</h1>
+<section id="input-parameters" class="level1">
+<h1>Input Parameters</h1>
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
 
 from shiny import reactive
 from shiny.express import input, render, ui
 
-ui.input_numeric("x", "Numeric input", 1, min=1, max=10) 
+@render.text
+def txt1():
+    return f'Foundation'
 
 
-@reactive.Calc
-def x_times_2():
-    val = input.x() * 2
-    print(f"Running x_times_2(). Result is {val}.")
-    return val
+ui.input_numeric("D_f", "Diameter (m)", 8) 
+ui.input_numeric("L_f", "Length (m)", 9.3) 
+ui.input_numeric("t_f", "Thickness (mm)", 20) 
+ui.input_numeric("E_f", "Young's modulus (GPa)", 210) 
+ui.input_numeric("rho_f", "Density (kg/m3)", 7850) 
 
 
 @render.text
 def txt1():
-    return f'x times 2 is: "{x_times_2()}"'
+    return f'Soil'
+
+ui.input_numeric("rho_s", "Soil's Density (kg/m3)", 2000) 
+ui.input_numeric("E_s", "Soil's Young's modulus at 1D depth (MPa)", 130) 
+ui.input_numeric("v_s", "Soil's Poisson ratio", 130) 
 
 
-@render.text
-def txt2():
-    return f'x times 2 is: "{x_times_2()}"'
+@reactive.Calc
+def x_times_2():
+    val = input.D_f() * 2
+    print(f"D_f times 2 =  {val}.")
+    return val
+
+
 </code></pre>
 
 
