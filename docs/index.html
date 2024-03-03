@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kyeongsunkim – quarto-input00b7b643</title>
+<title>kyeongsunkim – quarto-input91da1a84</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,7 +121,8 @@ ul.task-list li input[type="checkbox"] {
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
 #| viewerHeight: 2000
 
-from shiny.express import input, render, ui, reactive
+from shiny import reactive
+from shiny.express import input, render, ui
 from faicons import icon_svg as icon
 
 ui.page_opts(fillable=True, title = "Title")
@@ -136,11 +137,14 @@ with ui.sidebar():
     ui.input_numeric("E_s", "Soil's Young's modulus at 1D depth (MPa)", 130) 
     ui.input_numeric("v_s", "Soil's Poisson ratio", 130) 
     
-@reactive.Calc
-def x_times_2():
-    val = input.D_f() * 2
-    print(f"D_f times 2 =  {val}.")
-    return val
+@render.text
+def slider_val():
+  val = input.D_f() *4  
+  return f"Slider value: {val}"
+
+@reactive.calc
+def x2():
+  return input.v_s() * 2
 
 
 </code></pre>
