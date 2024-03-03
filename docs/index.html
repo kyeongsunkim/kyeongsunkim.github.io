@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kyeongsunkim – quarto-input54f63bcd</title>
+<title>kyeongsunkim – quarto-inputed7fae47</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -123,20 +123,22 @@ ul.task-list li input[type="checkbox"] {
 
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
 
-from shiny import *
+ui.input_numeric("D", label="Diameter", value = 8, min = 0)
 
-app_ui = ui.page_fluid(
-    ui.input_slider("n", "N", 0, 100, 40),
-    ui.output_text_verbatim("txt"),
-)
 
-def server(input, output, session):
-    @output
-    @render.text
-    def txt():
-        return f"The value of n*2 is {input.n() * 2}"
 
-app = App(app_ui, server)</code></pre>
+@render.text
+def txt1():
+    return f'Input is: "{D}"'
+
+
+
+@reactive.Calc
+def x_times_2():
+    val = input.x() * 2
+    print(f"Running x_times_2(). Result is {D}.")
+    return val
+</code></pre>
 
 
 

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "kyeongsunkim",
     "section": "",
-    "text": "#| standalone: true\n\nfrom shiny import *\n\napp_ui = ui.page_fluid(\n    ui.input_slider(\"n\", \"N\", 0, 100, 40),\n    ui.output_text_verbatim(\"txt\"),\n)\n\ndef server(input, output, session):\n    @output\n    @render.text\n    def txt():\n        return f\"The value of n*2 is {input.n() * 2}\"\n\napp = App(app_ui, server)"
+    "text": "#| standalone: true\n\nui.input_numeric(\"D\", label=\"Diameter\", value = 8, min = 0)\n\n\n\n@render.text\ndef txt1():\n    return f'Input is: \"{D}\"'\n\n\n\n@reactive.Calc\ndef x_times_2():\n    val = input.x() * 2\n    print(f\"Running x_times_2(). Result is {D}.\")\n    return val"
   },
   {
     "objectID": "about.html",
@@ -18,6 +18,6 @@
     "href": "example.html",
     "title": "kyeongsunkim",
     "section": "",
-    "text": "The plot below allows you to control parameters used in the sine function. Experiment with the period, amplitude, and phase shift to see how they affect the graph.\n#| standalone: true\n#| viewerHeight: 420\n\nfrom shiny import reactive\nfrom shiny.express import input, render, ui\n\nui.input_slider(\"x\", \"Choose a number\", 1, 100, 50)\n\n\n@reactive.Calc\ndef x_times_2():\n    val = input.x() * 2\n    print(f\"Running x_times_2(). Result is {val}.\")\n    return val\n\n\n@render.text\ndef txt1():\n    return f'x times 2 is: \"{x_times_2()}\"'\n\n\n@render.text\ndef txt2():\n    return f'x times 2 is: \"{x_times_2()}\"'"
+    "text": "The plot below allows you to control parameters used in the sine function. Experiment with the period, amplitude, and phase shift to see how they affect the graph.\n#| standalone: true\n#| viewerHeight: 420\n\nfrom shiny import reactive\nfrom shiny.express import input, render, ui\n\nui.input_slider(\"x\", \"Choose a number\", 1, 100, 50)\n\nui.input_numeric(\"D\", label=\"Diameter\", value = 8, min = 0)\n\n\n@reactive.Calc\ndef x_times_2():\n    val = input.x() * 2\n    print(f\"Running x_times_2(). Result is {val}.\")\n    return val\n\n\n@render.text\ndef txt1():\n    return f'x times 2 is: \"{x_times_2()}\"'\n\n\n@render.text\ndef txt2():\n    return f'x times 2 is: \"{x_times_2()}\"'"
   }
 ]
