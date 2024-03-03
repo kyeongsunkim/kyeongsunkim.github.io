@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kyeongsunkim – quarto-inputc92c03f4</title>
+<title>kyeongsunkim – quarto-inputf9757e46</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,10 +97,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./example.html" aria-current="page"> 
-<span class="menu-text">Example</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -123,13 +119,12 @@ ul.task-list li input[type="checkbox"] {
 
 <p>The plot below allows you to control parameters used in the sine function. Experiment with the <em>period</em>, <em>amplitude</em>, and <em>phase shift</em> to see how they affect the graph.</p>
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
-#| viewerHeight: 1000
+#| viewerHeight: 420
 
 from shiny import reactive
 from shiny.express import input, render, ui
 
 ui.input_slider("x", "Choose a number", 1, 100, 50)
-
 ui.input_numeric("D", label="Diameter", value = 8, min = 0)
 
 
