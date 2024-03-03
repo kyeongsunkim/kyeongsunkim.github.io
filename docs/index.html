@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kyeongsunkim – quarto-input68b46507</title>
+<title>kyeongsunkim – quarto-inputd77533f2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
 from shiny import reactive
 from shiny.express import input, render, ui
 
-ui.input_slider("x", "Choose a number", 1, 100, 50)
+ui.input_numeric("x", "Numeric input", 1, min=1, max=10) 
 
 
 @reactive.Calc

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "input",
     "section": "",
-    "text": "input\n#| standalone: true\n\nfrom shiny import reactive\nfrom shiny.express import input, render, ui\n\nui.input_slider(\"x\", \"Choose a number\", 1, 100, 50)\n\n\n@reactive.Calc\ndef x_times_2():\n    val = input.x() * 2\n    print(f\"Running x_times_2(). Result is {val}.\")\n    return val\n\n\n@render.text\ndef txt1():\n    return f'x times 2 is: \"{x_times_2()}\"'\n\n\n@render.text\ndef txt2():\n    return f'x times 2 is: \"{x_times_2()}\"'"
+    "text": "input\n#| standalone: true\n\nfrom shiny import reactive\nfrom shiny.express import input, render, ui\n\nui.input_numeric(\"x\", \"Numeric input\", 1, min=1, max=10) \n\n\n@reactive.Calc\ndef x_times_2():\n    val = input.x() * 2\n    print(f\"Running x_times_2(). Result is {val}.\")\n    return val\n\n\n@render.text\ndef txt1():\n    return f'x times 2 is: \"{x_times_2()}\"'\n\n\n@render.text\ndef txt2():\n    return f'x times 2 is: \"{x_times_2()}\"'"
   },
   {
     "objectID": "about.html",
