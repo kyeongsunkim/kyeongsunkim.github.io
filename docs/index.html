@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kyeongsunkim – quarto-input66781431</title>
+<title>kyeongsunkim – quarto-inputf11e70b5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Input parameters below for calculations</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="components_model.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Fig.1. Components</figcaption>
+</figure>
+</div>
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
 #| viewerHeight: 1000
 
@@ -125,9 +130,10 @@ from shiny import reactive
 from shiny.express import input, render, ui
 from faicons import icon_svg as icon
 
-ui.page_opts(fillable=True, title = "Title")
+ui.page_opts(fillable=True, title = " ")
 
 with ui.layout_columns(col_widths=[6, 6, 12]):
+  
     with ui.card():
       ui.input_numeric("D_f", "Diameter (m)", 8) 
       ui.input_numeric("L_f", "Length (m)", 9.3) 
@@ -138,15 +144,15 @@ with ui.layout_columns(col_widths=[6, 6, 12]):
     with ui.card():
 
       ui.input_numeric("rho_s", "Soil's Density (kg/m3)", 2000) 
-      ui.input_numeric("E_s", "Soil's Young's modulus at 1D depth (MPa)", 130) 
+      ui.input_numeric("E_s", "Soil's Young's modulus (MPa)", 130) 
       ui.input_numeric("v_s", "Soil's Poisson ratio", 130) 
 
     with ui.card():
 
       @render.text
-        def slider_val():
-          val = input.D_f() *4234  
-          return f"Result: {val}"
+      def slider_val():
+        val = input.D_f() *4234  
+        return f"Result: {val}"
 </code></pre>
 
 
