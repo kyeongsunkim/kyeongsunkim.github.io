@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kyeongsunkim – quarto-inputed7fae47</title>
+<title>kyeongsunkim – quarto-inputc50aac10</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,8 +112,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#input" id="toc-input" class="nav-link active" data-scroll-target="#input">input</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -121,11 +127,21 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="input" class="level1">
+<h1>input</h1>
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
+from shiny import reactive
+from shiny.express import input, render, ui
 
-ui.input_numeric("D", label="Diameter", value = 8, min = 0)
-
-
+ui.column(
+    4,
+    "Foundation Dimensions",
+    ui.input_numeric("n1", label="n", value=1000, min=1),
+    ui.input_numeric("mean1", label="µ", value=0, step=0.1),
+    ui.input_numeric("sd1", label="σ", value=0.5, min=0.1, step=0.1),
+    ui.input_numeric("D", label="Diameter", value = 8, min = 0)
+),
+        
 
 @render.text
 def txt1():
@@ -141,6 +157,7 @@ def x_times_2():
 </code></pre>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
